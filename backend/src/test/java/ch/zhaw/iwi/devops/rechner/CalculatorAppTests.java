@@ -73,5 +73,5 @@ class CalculatorAppTests {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()->calculator.log(-2));
         //calculator.log(-2);
     }
+     */
 }
- */
