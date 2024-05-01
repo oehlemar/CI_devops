@@ -21,15 +21,15 @@ public class CalculatorApp {
         return a / b;
     }
     public double squareRoot(double number) {
-        if (number < 0) {
+/*         if (number < 0) {
             throw new IllegalArgumentException("Cannot calculate the square root of a negative number.");
-        }
+        } */
         return Math.sqrt(number);
     }
     public double log(double number) {
-        if (number <= 0) {
+/*         if (number <= 0) {
             throw new IllegalArgumentException("Logarithm for non-positive numbers is undefined.");
-        }
+        } */
         return Math.log(number);
     }
 

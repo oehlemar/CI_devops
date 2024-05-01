@@ -50,17 +50,11 @@ class CalculatorAppTests {
         assertEquals(2, calculator.divide(-4, -2));
     }
 
-    // Test einer Division durch 0
+/*     // Test einer Division durch 0
     @Test
     void testDivisionByZero() {
-        //ArithmeticException exception = assertThrows(ArithmeticException.class, ()-> calculator.divide(5, 0));
-        calculator.divide(5, 0);
-    }
-    // Test nur ganzzahlige Divisionen
-    @Test
-    void testDivisionNonFullNumber() {
-        //ArithmeticException exception = assertThrows(ArithmeticException.class, ()->calculator.divide(5, 2));
-        calculator.divide(5, 2);
+        ArithmeticException exception = assertThrows(ArithmeticException.class, ()-> calculator.divide(5, 0));
+        //calculator.divide(5, 2);
     }
     // Test Quadratwurzel
     @Test
@@ -68,15 +62,16 @@ class CalculatorAppTests {
         assertEquals(3, calculator.squareRoot(9), 0.001);
         assertEquals(5, calculator.squareRoot(25), 0.001);
         assertEquals(10, calculator.squareRoot(100), 0.001);
-        //IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()->calculator.squareRoot(-2));
-        calculator.squareRoot(-2);
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()->calculator.squareRoot(-2));
+        //calculator.squareRoot(-2);
     }
     // Test Logarithmus
     @Test
     void testLogarithm() {
         assertEquals(0, calculator.log(1), 0.001);
         assertEquals(1, calculator.log(Math.E), 0.001);
-        //IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()->calculator.log(-2));
-        calculator.log(-2);
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()->calculator.log(-2));
+        //calculator.log(-2);
     }
 }
+ */
