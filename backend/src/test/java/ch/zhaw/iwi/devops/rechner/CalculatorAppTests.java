@@ -50,13 +50,13 @@ class CalculatorAppTests {
         assertEquals(2, calculator.divide(-4, -2));
     }
 
-/*     // Test einer Division durch 0
+    // Test einer Division durch 0
     @Test
     void testDivisionByZero() {
         ArithmeticException exception = assertThrows(ArithmeticException.class, ()-> calculator.divide(5, 0));
         //calculator.divide(5, 2);
     }
-    // Test Quadratwurzel
+/*     // Test Quadratwurzel
     @Test
     void testSquareRoot() {
         assertEquals(3, calculator.squareRoot(9), 0.001);
