@@ -53,7 +53,7 @@ pipeline {
                 }
             }
         }
-        stage('Git Operations') {
+/*         stage('Git Operations') {
             steps {
                 script {
                     // Add all changes to staging area
@@ -71,6 +71,6 @@ pipeline {
                     sh "git push --credentials ${GIT_CREDENTIALS_ID} origin ${GIT_BRANCH}"
                 }
             }
-        }
+        } */
     }
 }
