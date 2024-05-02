@@ -1,5 +1,11 @@
 pipeline {
     agent any 
+    
+    environment {
+        GIT_CREDENTIALS_ID = 'jenkins-git-creds'  // The ID for your credentials in Jenkins
+        GIT_BRANCH = 'main'                      // Branch to push to
+    }
+
     stages {
         stage('Checkout') { 
             steps {
@@ -36,18 +42,35 @@ pipeline {
                 sh 'echo deploy'
             }
         }
-        stage('Git Commit and Push') {
+        stage('Setup Git Config') {
             steps {
                 script {
-                        sh '''
-                            git config --global user.email "oehlemar@students.zhaw.ch"
-                            git config --global user.name "oehlemar"
-                            git add -A
-                            git commit -m "commit build"
-                            git push origin main
-                        '''
-                    }
+                    // Set user name and email for git config
+                    sh '''
+                    git config --global user.email "oehlemar@students.zhaw.ch"
+                    git config --global user.name "oehlemar"
+                    '''
                 }
             }
+        }
+        stage('Git Operations') {
+            steps {
+                script {
+                    // Add all changes to staging area
+                    sh 'git add .'
+
+                    // Commit changes if there are any
+                    sh '''
+                    if git diff --cached --quiet; then
+                        echo "No changes to commit."
+                    else
+                        git commit -m "Automated commit by Jenkins, Commit Build"
+                    fi
+                    '''
+                    // Push changes to the configured branch
+                    sh "git push --credentials ${GIT_CREDENTIALS_ID} origin ${GIT_BRANCH}"
+                }
+            }
+        }
     }
 }
