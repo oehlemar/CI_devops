@@ -1,5 +1,4 @@
 pipeline {
-    
     agent any 
     stages {
         stage('Checkout') { 
@@ -37,5 +36,16 @@ pipeline {
                 sh 'echo deploy'
             }
         }
+        stage('Git Commit and Push') {
+            steps {
+                script {
+                        sh '''
+                            git add -A
+                            git commit -m "commit build"
+                            git push origin main
+                        '''
+                    }
+                }
+            }
     }
 }
