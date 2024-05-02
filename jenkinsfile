@@ -2,7 +2,7 @@ pipeline {
     agent any 
     
     environment {
-        GIT_CREDENTIALS_ID = 'jenkins-git-creds'  // The ID for your credentials in Jenkins
+        GIT_CREDENTIALS_ID = 'CI_devops'  // The ID for your credentials in Jenkins
         GIT_BRANCH = 'main'                      // Branch to push to
     }
 
