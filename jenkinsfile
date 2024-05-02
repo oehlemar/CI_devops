@@ -1,0 +1,40 @@
+pipeline {
+    agent any 
+    stages {
+        stage('Checkout') { 
+            steps {
+                sh 'echo checkout'
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/oehlemar/CI_devops']])
+            }
+        }
+
+        stage('Build NPM (FRONTEND') {
+            steps{
+                dir('frontend'){
+                    nodejs('NodeJS 20.10.0') {
+                        sh 'npm install'
+                        sh 'npm run build'
+                    }
+                }
+            }
+        }
+        stage('Build with Gradle and Test (BACKEND)') {
+            steps {
+                dir('backend') {
+                    sh 'chmod +x gradlew'
+                    sh './gradlew test' // Runs the Gradle build script
+                }
+            }
+        }
+        /*stage('Test') { 
+            steps {
+                sh 'echo test'
+            }
+        }*/
+        stage('Deploy') { 
+            steps {
+                sh 'echo deploy'
+            }
+        }
+    }
+}
