@@ -40,6 +40,8 @@ pipeline {
             steps {
                 script {
                         sh '''
+                            git config --global user.email "oehlemar@students.zhaw.ch"
+                            git config --global user.name "oehlemar"
                             git add -A
                             git commit -m "commit build"
                             git push origin main
